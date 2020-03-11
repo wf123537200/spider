@@ -1,0 +1,89 @@
+.page {
+  &::before {
+    content: "";
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: 40%;
+    background-image: linear-gradient(-90deg, #0060e3 0%, #0095ff 100%);
+  }
+
+  &::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: -10%;
+    width: 60%;
+    height: 40%;
+    background-image: linear-gradient(-90deg, #0095ff 0%, #004a8e 100%);
+  }
+}
+
+.container {
+  position: absolute;
+  border-radius: 10px;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  background: #fff;
+  height: 600px;
+  width: 1200px;
+  margin: -320px 0 0 -600px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+
+  .main {
+    color: #000;
+    font-size: 60px;
+    position: absolute;
+    left: 80px;
+    top: 120px;
+  }
+
+  .meta {
+    // background: url('/public/react.svg') 100%/100%;
+    position: absolute;
+    right: -200px;
+    top: -132px;
+    width: 1000px;
+    height: 1000px;
+    opacity: 0.15;
+    img {
+      height: 100%;
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  .ball {
+    position: absolute;
+    left: 810px;
+    top: 278px;
+    width: 179px;
+    height: 179px;
+    background-image: linear-gradient(-90deg, #ff904b 0%, #f16255 100%);
+    border-radius: 100%;
+  }
+
+  &::after {
+    position: fixed;
+    content: "";
+    left: 0;
+    top: -10%;
+    width: 60%;
+    height: 40%;
+    margin: -10px;
+    box-sizing: content-box;
+    opacity: 0.1;
+    background-image: linear-gradient(-90deg, #0095ff 0%, #004a8e 100%);
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
