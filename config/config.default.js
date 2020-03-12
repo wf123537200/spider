@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1583724895222_8287';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['errorHandler'];
 
   config.onClientError = async (err, socket, app) => {
     return {
@@ -31,6 +31,13 @@ module.exports = appInfo => {
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
+  };
+
+  // close csrf
+  config.security = {
+    csrf: {
+      enable: false
+    },
   };
 
   return {

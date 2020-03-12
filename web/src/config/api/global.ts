@@ -12,6 +12,8 @@ export default {
 
     delete: 'delete /test/abc',
     // 保存用户根目录
-    saveRootDir: 'get /save'
+    saveRootDir: 'post /user/setRootDir',
+    // 读取用户信息
+    getUserInfo: 'post /user/getUserInfo'
   },
 };

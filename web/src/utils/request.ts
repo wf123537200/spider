@@ -139,11 +139,11 @@ export default function request(options: RequestOptions) {
       let data = options.fetchType === 'YQL' ? response.data.query.results.json : response.data;
       if (data instanceof Array) {
         data = {
-          resultData: data,
+          result: data,
         };
       }
 
-      const { resultCode, resultData, message } = data;
+      const { resultCode, result, message } = data;
 
       if (typeof resultCode !== 'undefined' && resultCode !== '0' && resultCode !== 'ok') {
         // 不需要全局错误提示
@@ -172,7 +172,7 @@ export default function request(options: RequestOptions) {
         return Promise.reject(new Error(msg));
       }
 
-      return Promise.resolve(resultData);
+      return Promise.resolve(result);
     })
     .catch(error => {
       const { response, message } = error;

@@ -4,29 +4,35 @@ import {
 } from 'antd';
 import * as React from 'react';
 import { connect } from 'dva';
+import { QuickstartType } from 'src/models/quickstart';
 
 const { Title, Paragraph, Text } = Typography;
 interface PropsType {
   readonly dispatch: any;
+  quickstart: QuickstartType;
 }
 
 const Comp: React.FC<PropsType> = ({
- dispatch,
+ dispatch, quickstart
 }) => {
-  let config = {
-    rootName: '/saveRoot'
-  }
+  let {userInfo} = quickstart;
 
   const inputChange = (e) => {
-    config.rootName = e.target.value;
+    dispatch({
+      type: 'quickstart/updateState',
+      payload: {
+        userInfo: {
+          rootDir: e.target.value
+        }
+      }
+    })
   }
 
   const saveConfig = () => {
-    console.log(config);
     const options = {
       type: 'quickstart/saveRootDir',
       payload: {
-        ...config
+        ...userInfo
       }
     } as any
     dispatch(options);
@@ -45,7 +51,7 @@ const Comp: React.FC<PropsType> = ({
       <Paragraph>
         <ul>
           <li>在这里输入保存文件的目录路径，建议是绝对路径,相对路径亦可</li>
-          <li><input type="text" placeholder="/saveRoot" onChange={inputChange} /></li>
+          <li><input type="text" placeholder="/saveRoot" onChange={inputChange} value={userInfo.rootDir} /></li>
         </ul>
         <Button type="primary" onClick={saveConfig}>save</Button>
       </Paragraph>
@@ -60,4 +66,4 @@ const Comp: React.FC<PropsType> = ({
   )
 }
 
-export default connect()(Comp);
+export default connect(({quickstart}) => ({quickstart}))(Comp);

@@ -3,26 +3,24 @@
 const Service = require('egg').Service;
 const fs = require('fs');
 const path = require('path')
-
-class SaveImage extends Service {
+// 默认保存文件夹
+const saveDirName = 'user';
+class Files extends Service {
     /**
-     * 保存图片
-     * @param src
+     * 保存文件
+     * @param context
      * @param fileName
      * @param dirName
      * @param okCallBackFn
      * @param failCallBackFn
      * @returns {Promise<void>}
      */
-    async main({src, fileName, dirName, okCallBackFn, failCallBackFn}) {
-        if (!src) throw new Error('nothing 2 save');
-        const saveDirName = this.app.userInfo.rootDir;
+    async savefile({context, fileName, dirName, okCallBackFn, failCallBackFn}) {
+        if (!context) throw new Error('nothing 2 save');
         const dir = `./${saveDirName}/${dirName}`;
         async function writeFile() {
-            const {ctx} = this;
-            const result = await ctx.curl(src);
-            const filePath = `${dir}/${fileName}.png`
-            fs.writeFile(path.resolve(filePath), result.data, {flag: 'w'}, function (err) {
+            const filePath = `${dir}/${fileName}.json`
+            fs.writeFile(path.resolve(filePath), context, {flag: 'w'}, function (err) {
                 if (err) {
                     console.log(err);
                     failCallBackFn && failCallBackFn()
@@ -42,6 +40,18 @@ class SaveImage extends Service {
             await writeFile.call(this);
         }
     }
+
+    /**
+     * 读取文件
+     * @param fileName
+     * @param dirName
+     * @param okCallBackFn
+     * @param failCallBackFn
+     * @returns {Promise<void>}
+     */
+    async readFile({fileName, dirName, okCallBackFn, failCallBackFn}) {
+        return fs.readFileSync(`./${saveDirName}/${dirName}/${fileName}`, 'utf8');
+    }
 }
 
-module.exports = SaveImage;
+module.exports = Files;
