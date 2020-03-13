@@ -35,7 +35,6 @@ export default modelExtend(commonModel, {
 
     * getUserInfo({payload}, {call, put}) {
       const data = yield call(services['global/getUserInfo']);
-      console.log(data)
       yield put({
         type: 'updateState',
         payload: {

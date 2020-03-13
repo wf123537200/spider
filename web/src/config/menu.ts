@@ -20,24 +20,14 @@ const menuTreeOrigin = [
     route: '/quickstart',
   },
   {
-    id: 'examples',
-    name: 'Examples',
-    icon: 'bulb',
+    id: 'spiderList',
+    name: '爬虫列表',
+    icon: 'bug',
     children: [
       {
         id: 'request',
-        name: 'Request',
-        route: '/examples/request'
-      },
-      {
-        id: 'mock',
-        name: 'Mock',
-        route: '/examples/mock'
-      },
-      {
-        id: 'intl',
-        name: '国际化',
-        route: '/examples/intl'
+        name: '3had',
+        route: '/spider/3had'
       },
     ],
   },

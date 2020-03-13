@@ -3,6 +3,7 @@
 const Service = require('egg').Service;
 const cheerio = require("cheerio");
 const iconv = require('iconv-lite');
+const path = require('path');
 let errorList = [];
 let totalLen = 0;
 let completeNo = 0;
@@ -22,8 +23,12 @@ class Analysis extends Service {
         } else {
             await this.getAll(b, addr);
         }
+        const saveDirName = this.getTitle(b);
 
-        return '已经完成' + totalLen;
+        return {
+            total: totalLen,
+            addr: path.resolve(`./${this.app.userInfo.rootDir}/${saveDirName}`)
+        };
     }
 
     async getAll(b, addr) {
@@ -63,6 +68,15 @@ class Analysis extends Service {
         let r = `<img src="${src}" />`;
         ctx.service.saveImage.main({src, fileName: pn, dirName: title, okCallBackFn: index => this.refreshRes(index)})
         return r;
+    }
+
+    getTitle(b) {
+        const $ = cheerio.load(b);
+        const $title = $('title');
+        let title = $title[0].children[0].data.split(' ')[0];
+        title = title.substr(0, title.indexOf('(') > 0 ? title.indexOf('(') : title.indexOf('_'));
+
+        return title
     }
 
     refreshRes() {

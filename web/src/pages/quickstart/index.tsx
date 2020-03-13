@@ -36,7 +36,7 @@ const Comp: React.FC<PropsType> = ({
       }
     } as any
     dispatch(options);
-    message.success(`成功发出dispatch请求,参数为${options}`);
+    message.success('保存成功！');
   }
 
   return (
@@ -59,7 +59,7 @@ const Comp: React.FC<PropsType> = ({
       <Title level={3}>当前支持网站列表，点击跳转到对应分析器</Title>
       <Paragraph>
         <ul>
-          <li><a href="/3had.com">www.3had.com 提供连接，下载包含目录地址的整本漫画到本地 ./saveRoot/comicName/</a></li>
+          <li><a href="#/spider/3had">提供连接 m.3had.com ，下载包含目录地址的整本漫画到本地 ./saveRoot/comicName/</a></li>
         </ul>
       </Paragraph>
     </Typography>

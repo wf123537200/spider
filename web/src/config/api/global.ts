@@ -14,6 +14,8 @@ export default {
     // 保存用户根目录
     saveRootDir: 'post /user/setRootDir',
     // 读取用户信息
-    getUserInfo: 'post /user/getUserInfo'
+    getUserInfo: 'post /user/getUserInfo',
+    // 读取用户信息
+    runSpider: 'post /spider/runSpider'
   },
 };

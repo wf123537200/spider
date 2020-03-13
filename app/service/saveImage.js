@@ -41,6 +41,7 @@ class SaveImage extends Service {
         } else {
             await writeFile.call(this);
         }
+        return dir;
     }
 }
 
