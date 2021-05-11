@@ -34,6 +34,11 @@ const adminRoutes: RouteItemType[] = [
         component: () => import('src/pages/spider/3had'),
         models: () => [import('src/models/spider')],
       },
+      {
+        path: '/xiximh',
+        component: () => import('src/pages/spider/xiximh'),
+        models: () => [import('src/models/spider')],
+      },
     ],
   },
 ];

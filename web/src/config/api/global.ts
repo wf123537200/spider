@@ -16,6 +16,8 @@ export default {
     // 读取用户信息
     getUserInfo: 'post /user/getUserInfo',
     // 读取用户信息
-    runSpider: 'post /spider/runSpider'
+    runSpider: 'post /spider/runSpider',
+    // 无头浏览器模式
+    runSpiderWithHandless: 'post /spider/runSpiderWithHandless'
   },
 };

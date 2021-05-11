@@ -25,9 +25,14 @@ const menuTreeOrigin = [
     icon: 'bug',
     children: [
       {
-        id: 'request',
+        id: '3had',
         name: '3had',
         route: '/spider/3had'
+      },
+      {
+        id: 'xiximh',
+        name: 'xiximh',
+        route: '/spider/xiximh'
       },
     ],
   },

@@ -20,8 +20,8 @@ class SaveImage extends Service {
         const dir = `./${saveDirName}/${dirName}`;
         async function writeFile() {
             const {ctx} = this;
-            const result = await ctx.curl(src);
-            const filePath = `${dir}/${fileName}.png`
+            const result = await ctx.curl(src, Object.assign({timeout: 300000}));
+            const filePath = `${dir}/${fileName}`
             fs.writeFile(path.resolve(filePath), result.data, {flag: 'w'}, function (err) {
                 if (err) {
                     console.log(err);

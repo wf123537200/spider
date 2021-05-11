@@ -5,13 +5,14 @@ import commonModel from './common';
 export interface SpiderType {
   targetUrl: string;
   res: any;
+  type: string;
 }
 
 export default modelExtend(commonModel, {
   namespace: 'spider',
 
   state: {
-    targetUrl: 'http://m.3had.com/shaonv/2020/0117/6846.html',
+    targetUrl: '',
     res: {
       addr: '',
       total: ''
@@ -35,6 +36,18 @@ export default modelExtend(commonModel, {
         ...payload
       };
       const data = yield call(services['global/runSpider'], params);
+      yield put({
+        type: 'updateState',
+        payload: {
+          res: data
+        }
+      });
+    },
+    * runWithHandless({ payload }, { call, put }) {
+      const params = {
+        ...payload
+      };
+      const data = yield call(services['global/runSpiderWithHandless'], params);
       yield put({
         type: 'updateState',
         payload: {
