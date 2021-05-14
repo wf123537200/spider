@@ -27,7 +27,7 @@ const Comp: React.FC<PropsType> = ({
 
   const runSpider = () => {
     // 试试批量方案
-    const range = [42826, 42849]; // 42849];
+    const range = [17902, 17931]; // 42849];
     for (let i = range[0], cnt = 0; i <= range[1]; i++, cnt++) {
       setTimeout(() => {
         console.log(i + ' has been send');
